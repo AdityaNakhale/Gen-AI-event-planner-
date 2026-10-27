@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GenAI-powered celebration and event planner for weddings, birthdays, and community events with smart budgets, vendor checklists, timelines, and AI concierge." />
+  <meta name="theme-color" content="#F9EAD7" />
+  <title>EventGenie — AI-Powered Celebration & Event Planner</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' *;" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="alternate icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="images/favicon.svg" />
+
+  <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="EventGenie — AI-Powered Celebration & Event Planner" />
+  <meta property="og:description" content="GenAI-powered celebration and event planner for weddings, birthdays, and community events with smart budgets, vendor checklists, timelines, and AI concierge." />
+  <meta property="og:image" content="images/og_image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="EventGenie — AI Event Planning Assistant" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EventGenie — AI-Powered Celebration & Event Planner" />
+  <meta name="twitter:description" content="GenAI-powered celebration and event planner for weddings, birthdays, and community events with smart budgets, vendor checklists, timelines, and AI concierge." />
+  <meta name="twitter:image" content="images/og_image.png" />
+  <meta name="twitter:image:alt" content="EventGenie — AI Event Planning Assistant" />
+
+  <!-- Typography & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════════════════════════════════ -->
+<header class="navbar" role="banner">
+  <div class="navbar__inner">
+    <a href="#" class="navbar__logo" aria-label="EventGenie home" data-nav="landing">
+      <svg class="navbar__logo-svg" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M16 2L18.8 11.2L28 14L18.8 16.8L16 26L13.2 16.8L4 14L13.2 11.2L16 2Z" fill="#E10600"/>
+        <path d="M23 6L24.5 10L28.5 11.5L24.5 13L23 17L21.5 13L17.5 11.5L21.5 10L23 6Z" fill="#E34234" opacity="0.85"/>
+        <path d="M8 18L9 21L12 22L9 23L8 26L7 23L4 22L7 21L8 18Z" fill="#BFE23A"/>
+      </svg>
+      <span class="navbar__logo-text">EventGenie</span>
+    </a>
+    <nav class="navbar__links" aria-label="Main navigation">
+      <a href="#" class="nav__link" data-nav="dashboard" aria-label="Go to Dashboard">Dashboard</a>
+      <a href="#" class="nav__link" data-nav="plans"     aria-label="View saved plans">My Plans</a>
+      <a href="#" class="nav__link" data-nav="chat"      aria-label="Chat with AI">AI Chat</a>
+    </nav>
+    <button class="btn btn--primary btn--sm navbar__cta" data-nav="wizard" aria-label="Create new plan">
+      + New Plan
+    </button>
+  </div>
+</header>
+
+<main id="main-content" tabindex="-1">
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     VIEW 1: LANDING PAGE
+═══════════════════════════════════════════════════════════════════════════ -->
+<section id="view-landing" class="view view--active" aria-label="Landing page">
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="hero__container">
+      <div class="hero__grid">
+        <!-- Hero Left Column -->
+        <div class="hero__content">
+          <div class="hero__badge">
+            <span class="hero__badge-sparkle">✨</span>
+            <span>Powered by Google <strong class="badge-gemini-gradient">Gemini AI</strong></span>
+          </div>
+          <h1 class="hero__title">
+            Plan Your Perfect<br/>
+            <span class="text-crimson">Celebration</span> with <span class="ai-spark-group">AI <span class="hero-sparks" aria-hidden="true">彡</span></span>
+          </h1>
+          <p class="hero__subtitle">
+            From intimate birthdays to grand weddings and vibrant community events — EventGenie creates smart budgets, vendor checklists, timelines, and personalized ideas in seconds.
+          </p>
+          <div class="hero__actions">
+            <button class="btn btn--primary btn--lg" id="btn-start-planning" aria-label="Start planning your event">
+              Start Planning Free ✨
+            </button>
+            <button class="btn btn--white-pill btn--lg" data-nav="plans" aria-label="View saved plans">
+              <span class="play-icon-red" aria-hidden="true">▶</span> View My Plans
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero Right Column -->
+        <div class="hero__visual">
+          <div class="hero__mockup-card">
+            <img src="images/hero_illustration.jpg" alt="EventGenie 3D AI Event Planner Illustration" class="hero__mockup-img" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Stats Bar Pill -->
+      <div class="stats-bar-wrapper">
+        <div class="stats-bar-pill">
+          <div class="stat-pill-item">
+            <div class="stat-pill-icon stat-pill-icon--coral" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="stat-pill-text">
+              <span class="stat-pill-num">3</span>
+              <span class="stat-pill-label">Event Types</span>
+            </div>
+          </div>
+
+          <div class="stat-pill-item">
+            <div class="stat-pill-icon stat-pill-icon--lavender" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+            </div>
+            <div class="stat-pill-text">
+              <span class="stat-pill-num">AI</span>
+              <span class="stat-pill-label">Budget Planning</span>
+            </div>
+          </div>
+
+          <div class="stat-pill-item">
+            <div class="stat-pill-icon stat-pill-icon--lime" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </div>
+            <div class="stat-pill-text">
+              <span class="stat-pill-num">100%</span>
+              <span class="stat-pill-label">Free to Use</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="features-section" aria-label="Key features">
+    <div class="section-header text-center">
+      <h2 class="section-title">
+        Everything You Need to Plan <span class="text-crimson">with Confidence</span>
+      </h2>
+      <p class="section-subtitle">
+        Powerful AI tools to turn your ideas into unforgettable celebrations.
+      </p>
+    </div>
+
+    <div class="features-grid-clean">
+      <article class="feature-card-clean">
+        <div class="feature-card-icon-wrap feature-icon--coral" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3 class="feature-card-title">Smart Budget Allocator</h3>
+        <p class="feature-card-desc">AI breaks your total budget into vendor categories, with real-time tracking of spent vs. remaining.</p>
+        <button class="feature-card-arrow feature-arrow--coral" aria-label="Explore Smart Budget Allocator" data-action="quick-nav" data-target="budget">→</button>
+      </article>
+
+      <article class="feature-card-clean">
+        <div class="feature-card-icon-wrap feature-icon--lavender" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 14 2 2 4-4"/></svg>
+        </div>
+        <h3 class="feature-card-title">Vendor Checklist</h3>
+        <p class="feature-card-desc">Auto-generated vendor lists tailored to your event type, with cost estimates and booking status.</p>
+        <button class="feature-card-arrow feature-arrow--lavender" aria-label="Explore Vendor Checklist" data-action="quick-nav" data-target="vendors">→</button>
+      </article>
+
+      <article class="feature-card-clean">
+        <div class="feature-card-icon-wrap feature-icon--lime" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3 class="feature-card-title">Timeline & Countdown</h3>
+        <p class="feature-card-desc">Month-by-month task planner that works backwards from your event date. Never miss a deadline.</p>
+        <button class="feature-card-arrow feature-arrow--lime" aria-label="Explore Timeline & Countdown" data-action="quick-nav" data-target="timeline">→</button>
+      </article>
+
+      <article class="feature-card-clean">
+        <div class="feature-card-icon-wrap feature-icon--chartreuse" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+        </div>
+        <h3 class="feature-card-title">Personalized Ideas</h3>
+        <p class="feature-card-desc">Get AI-curated themes, décor, catering, and entertainment ideas matched to your preferences and budget.</p>
+        <button class="feature-card-arrow feature-arrow--chartreuse" aria-label="Explore Personalized Ideas" data-action="quick-nav" data-target="ideas">→</button>
+      </article>
+
+      <article class="feature-card-clean">
+        <div class="feature-card-icon-wrap feature-icon--pink" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3 class="feature-card-title">AI Event Concierge</h3>
+        <p class="feature-card-desc">Chat with EventGenie anytime. Ask for cost-saving tips, vendor advice, or inspiration.</p>
+        <button class="feature-card-arrow feature-arrow--pink" aria-label="Explore AI Event Concierge" data-action="quick-nav" data-target="chat">→</button>
+      </article>
+
+      <article class="feature-card-clean">
+        <div class="feature-card-icon-wrap feature-icon--lavender" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+        </div>
+        <h3 class="feature-card-title">Save & Resume</h3>
+        <p class="feature-card-desc">All plans saved locally in your browser. Pick up exactly where you left off, every time.</p>
+        <button class="feature-card-arrow feature-arrow--lavender" aria-label="Explore Save & Resume" data-action="quick-nav" data-target="plans">→</button>
+      </article>
+    </div>
+  </div>
+
+  <!-- Three Event Types Showcase Section -->
+  <div class="event-types-section" aria-label="Supported event types">
+    <div class="section-header text-center">
+      <h2 class="section-title">
+        Three Event Types, <span class="text-crimson">Infinite Possibilities</span> <span class="spark-mark" aria-hidden="true">彡</span>
+      </h2>
+      <p class="section-subtitle">
+        Different celebrations. Same powerful AI planning.
+      </p>
+    </div>
+
+    <div class="event-showcase-grid">
+      <!-- Wedding Card -->
+      <article class="showcase-card showcase-card--wedding">
+        <div class="showcase-img-wrap">
+          <img src="images/wedding_banner.jpg" alt="Romantic wedding ceremony setup on sunny beach" class="showcase-img" />
+        </div>
+        <div class="showcase-body">
+          <div class="showcase-header">
+            <div class="showcase-icon-badge showcase-icon--wedding" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="12" r="5"/><circle cx="16" cy="12" r="5"/></svg>
+            </div>
+            <h3 class="showcase-title">Weddings</h3>
+          </div>
+          <p class="showcase-desc">Venue, catering, photography, florist, DJ, invitations & more — a 12-month plan awaits.</p>
+          <button class="btn btn--block btn--wedding" data-action="start-type" data-type="wedding" aria-label="Plan your wedding">
+            Plan Your Wedding →
+          </button>
+        </div>
+      </article>
+
+      <!-- Birthday Card -->
+      <article class="showcase-card showcase-card--birthday">
+        <div class="showcase-img-wrap">
+          <img src="images/birthday_banner.jpg" alt="Festive birthday cake and gift boxes setup" class="showcase-img" />
+        </div>
+        <div class="showcase-body">
+          <div class="showcase-header">
+            <div class="showcase-icon-badge showcase-icon--birthday" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v2"/><path d="M12 8v2"/><path d="M17 8v2"/><path d="M7 4h.01"/><path d="M12 4h.01"/><path d="M17 4h.01"/></svg>
+            </div>
+            <h3 class="showcase-title">Birthday Parties</h3>
+          </div>
+          <p class="showcase-desc">Cake, entertainment, décor, favors — plan the perfect celebration from 2 months out.</p>
+          <button class="btn btn--block btn--birthday" data-action="start-type" data-type="birthday" aria-label="Plan a birthday party">
+            Plan a Birthday →
+          </button>
+        </div>
+      </article>
+
+      <!-- Community Card -->
+      <article class="showcase-card showcase-card--community">
+        <div class="showcase-img-wrap">
+          <img src="images/community_banner.jpg" alt="Lively outdoor community festival in park" class="showcase-img" />
+        </div>
+        <div class="showcase-body">
+          <div class="showcase-header">
+            <div class="showcase-icon-badge showcase-icon--community" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="showcase-title">Community Events</h3>
+          </div>
+          <p class="showcase-desc">Permits, AV, food trucks, volunteers, marketing — orchestrate a community gathering with confidence.</p>
+          <button class="btn btn--block btn--community" data-action="start-type" data-type="community" aria-label="Plan a community event">
+            Plan a Community Event →
+          </button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     VIEW 2: EVENT WIZARD
+═══════════════════════════════════════════════════════════════════════════ -->
+<section id="view-wizard" class="view" aria-label="Event planning wizard" aria-hidden="true">
+  <div class="wizard">
+    <div class="wizard__header">
+      <h1 class="wizard__title">Let's Plan Your Event ✨</h1>
+      <p class="wizard__subtitle" id="step-counter">Step 1 of 4</p>
+      <!-- Step indicator -->
+      <div class="step-indicator" role="progressbar" aria-label="Wizard progress" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4">
+        <div class="step-indicator__dot step-indicator__dot--active" aria-label="Step 1: Event type"></div>
+        <div class="step-indicator__line"></div>
+        <div class="step-indicator__dot" aria-label="Step 2: Event details"></div>
+        <div class="step-indicator__line"></div>
+        <div class="step-indicator__dot" aria-label="Step 3: Budget"></div>
+        <div class="step-indicator__line"></div>
+        <div class="step-indicator__dot" aria-label="Step 4: Preferences"></div>
+      </div>
+    </div>
+
+    <form id="wizard-form" class="wizard__form" novalidate aria-label="Event planning form">
+      <!-- Hidden field for event type -->
+      <input type="hidden" id="field-event-type" name="eventType" />
+
+      <!-- ── STEP 1: Event Type ──────────────────────────────────────────── -->
+      <div id="wizard-step-1" class="wizard__step" role="group" aria-labelledby="step1-title">
+        <h2 class="wizard__step-title" id="step1-title">What are you celebrating?</h2>
+        <div class="event-type-grid" role="radiogroup" aria-label="Select event type">
+          <button type="button" class="event-type-card" data-type="wedding" role="radio" aria-checked="false"
+            aria-label="Wedding event type" tabindex="0">
+            <span class="event-type-card__icon" aria-hidden="true">💍</span>
+            <span class="event-type-card__label">Wedding</span>
+            <span class="event-type-card__desc">12-month planner</span>
+          </button>
+          <button type="button" class="event-type-card" data-type="birthday" role="radio" aria-checked="false"
+            aria-label="Birthday party event type" tabindex="0">
+            <span class="event-type-card__icon" aria-hidden="true">🎂</span>
+            <span class="event-type-card__label">Birthday Party</span>
+            <span class="event-type-card__desc">2-month planner</span>
+          </button>
+          <button type="button" class="event-type-card" data-type="community" role="radio" aria-checked="false"
+            aria-label="Community event type" tabindex="0">
+            <span class="event-type-card__icon" aria-hidden="true">🏘️</span>
+            <span class="event-type-card__label">Community Event</span>
+            <span class="event-type-card__desc">6-month planner</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── STEP 2: Event Details ──────────────────────────────────────── -->
+      <div id="wizard-step-2" class="wizard__step" hidden aria-hidden="true" role="group" aria-labelledby="step2-title">
+        <h2 class="wizard__step-title" id="step2-title">Tell us about your event</h2>
+        <div class="form-grid">
+          <div class="form-group form-group--full">
+            <label class="form-label" for="field-event-name">Event Name <span aria-hidden="true">*</span></label>
+            <input class="form-input" type="text" id="field-event-name" name="eventName"
+              placeholder="e.g. Sarah & Tom's Wedding" autocomplete="off"
+              aria-required="true" aria-describedby="event-name-hint" />
+            <span class="form-hint" id="event-name-hint">Give your event a memorable name</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="field-event-date">Event Date <span aria-hidden="true">*</span></label>
+            <input class="form-input" type="date" id="field-event-date" name="eventDate"
+              aria-required="true" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="field-guest-count">Number of Guests <span aria-hidden="true">*</span></label>
+            <input class="form-input" type="number" id="field-guest-count" name="guestCount"
+              min="1" max="10000" placeholder="e.g. 150"
+              aria-required="true" />
+          </div>
+          <div class="form-group form-group--full">
+            <label class="form-label" for="field-venue">Venue / Location</label>
+            <input class="form-input" type="text" id="field-venue" name="venue"
+              placeholder="e.g. Garden Estate, Mumbai (or leave blank)" autocomplete="off" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STEP 3: Budget ─────────────────────────────────────────────── -->
+      <div id="wizard-step-3" class="wizard__step" hidden aria-hidden="true" role="group" aria-labelledby="step3-title">
+        <h2 class="wizard__step-title" id="step3-title">What's your budget?</h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="field-currency">Currency</label>
+            <select class="form-input form-select" id="field-currency" name="currency" aria-label="Select currency">
+              <option value="INR">₹ Indian Rupee (INR)</option>
+              <option value="USD">$ US Dollar (USD)</option>
+              <option value="EUR">€ Euro (EUR)</option>
+              <option value="GBP">£ British Pound (GBP)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="field-budget">Total Budget <span aria-hidden="true">*</span></label>
+            <input class="form-input" type="number" id="field-budget" name="budget"
+              min="1000" max="100000000" placeholder="e.g. 500000"
+              aria-required="true" aria-describedby="budget-hint" />
+          </div>
+          <div class="form-group form-group--full">
+            <label class="form-label" for="budget-slider">Adjust with slider</label>
+            <input class="form-slider" type="range" id="budget-slider"
+              min="5000" max="5000000" step="5000" value="500000"
+              aria-label="Budget slider" />
+            <div class="budget-range-labels" aria-hidden="true">
+              <span>₹5K</span><span>₹50L</span>
+            </div>
+          </div>
+          <div class="form-group form-group--full">
+            <div class="budget-preview glass-card" id="budget-preview" aria-live="polite" aria-label="Budget suggestion">
+              Enter your budget to see per-guest cost estimate 💡
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STEP 4: Preferences ────────────────────────────────────────── -->
+      <div id="wizard-step-4" class="wizard__step" hidden aria-hidden="true" role="group" aria-labelledby="step4-title">
+        <h2 class="wizard__step-title" id="step4-title">Share your vision</h2>
+        <div class="form-grid">
+          <div class="form-group form-group--full">
+            <label class="form-label" for="field-preferences">Style, Preferences & Notes</label>
+            <textarea class="form-input form-textarea" id="field-preferences" name="preferences"
+              placeholder="Describe your dream event... e.g. 'Outdoor bohemian wedding, vegetarian menu, live jazz band, romantic lighting, floral arch for ceremony'"
+              rows="5" aria-describedby="pref-hint"></textarea>
+            <span class="form-hint" id="pref-hint">The more detail you share, the more personalized your AI plan will be!</span>
+          </div>
+          <div class="form-group form-group--full">
+            <div class="pref-chips" aria-label="Quick preference suggestions">
+              <span class="pref-chip__label">Quick add:</span>
+              <button type="button" class="pref-chip" data-pref="outdoor">🌿 Outdoor</button>
+              <button type="button" class="pref-chip" data-pref="vegetarian menu">🥗 Vegetarian</button>
+              <button type="button" class="pref-chip" data-pref="live music">🎵 Live Music</button>
+              <button type="button" class="pref-chip" data-pref="minimalist decor">🤍 Minimalist</button>
+              <button type="button" class="pref-chip" data-pref="kids friendly">👶 Kids Friendly</button>
+              <button type="button" class="pref-chip" data-pref="photography focus">📸 Photo Focus</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Wizard Navigation ──────────────────────────────────────────── -->
+      <div class="wizard__nav" role="navigation" aria-label="Wizard navigation">
+        <button type="button" class="btn btn--secondary" id="btn-prev" hidden aria-label="Go to previous step">
+          ← Back
+        </button>
+        <button type="button" class="btn btn--primary" id="btn-next" aria-label="Go to next step">
+          Next Step →
+        </button>
+        <button type="button" class="btn btn--primary btn--generate" id="btn-generate" hidden
+          aria-label="Generate my event plan with AI">
+          <span class="btn__spinner" aria-hidden="true"></span>
+          ✨ Generate My Plan
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     VIEW 3: GENERATING (Loading Screen)
+═══════════════════════════════════════════════════════════════════════════ -->
+<section id="view-generating" class="view" aria-label="Generating your plan" aria-hidden="true" aria-live="polite">
+  <div class="generating">
+    <div class="generating__orb" aria-hidden="true"></div>
+    <h1 class="generating__title">✨ EventGenie is crafting your plan...</h1>
+    <p class="generating__status" id="gen-status-text">Analyzing your preferences...</p>
+    <div class="generating__progress" role="progressbar" aria-label="Generation progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="gen-progress-bar" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="generating__steps" aria-hidden="true">
+      <div class="gen-step">💰 AI Budget Breakdown</div>
+      <div class="gen-step">📋 Vendor Checklist</div>
+      <div class="gen-step">💡 Creative Ideas</div>
+      <div class="gen-step">📅 Timeline Generation</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     VIEW 4: DASHBOARD
+═══════════════════════════════════════════════════════════════════════════ -->
+<section id="view-dashboard" class="view" aria-label="Event dashboard" aria-hidden="true">
+  <div class="dashboard">
+
+    <!-- Dashboard Header -->
+    <div class="dashboard__header glass-card">
+      <div class="dashboard__header-left">
+        <p class="dashboard__event-type" id="dashboard-event-type">💍 Wedding</p>
+        <h1 class="dashboard__event-name" id="dashboard-event-name">Your Event</h1>
+        <p class="dashboard__countdown" id="dashboard-countdown" aria-live="polite">Loading...</p>
+      </div>
+      <div class="dashboard__header-actions">
+        <button class="btn btn--secondary btn--sm" id="btn-export-plan" aria-label="Export plan as JSON">
+          📥 Export
+        </button>
+        <button class="btn btn--secondary btn--sm" id="btn-print-plan" aria-label="Print event plan">
+          🖨️ Print
+        </button>
+        <button class="btn btn--secondary btn--sm" id="btn-new-plan" aria-label="Create a new event plan">
+          + New Plan
+        </button>
+        <button class="btn btn--primary btn--sm" id="btn-dash-chat" aria-label="Open AI chat">
+          💬 Chat with AI
+        </button>
+      </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="stats-row" aria-label="Event statistics">
+      <div class="stat-card glass-card">
+        <span class="stat-card__label">Total Budget</span>
+        <span class="stat-card__value" id="stat-total-budget" aria-live="polite">—</span>
+      </div>
+      <div class="stat-card glass-card">
+        <span class="stat-card__label">Estimated Spend</span>
+        <span class="stat-card__value" id="stat-spent" aria-live="polite">—</span>
+      </div>
+      <div class="stat-card glass-card">
+        <span class="stat-card__label">Remaining</span>
+        <span class="stat-card__value" id="stat-remaining" aria-live="polite">—</span>
+      </div>
+      <div class="stat-card glass-card">
+        <span class="stat-card__label">Guests</span>
+        <span class="stat-card__value" id="stat-guests" aria-live="polite">—</span>
+      </div>
+    </div>
+
+    <!-- Budget Health Bar -->
+    <div class="budget-health glass-card" aria-label="Budget health overview">
+      <div class="budget-health__header">
+        <span class="budget-health__label">Budget Used</span>
+        <span class="badge" id="budget-health-badge" aria-live="polite">Loading...</span>
+      </div>
+      <div class="progress-bar" role="progressbar" aria-label="Budget utilization" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar__fill" id="budget-progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- Dashboard Tabs -->
+    <div class="dashboard__tabs" role="tablist" aria-label="Dashboard sections">
+      <button class="tab-btn tab-btn--active" data-tab="overview"  role="tab" aria-selected="true"  aria-controls="tab-overview">📊 Overview</button>
+      <button class="tab-btn" data-tab="vendors"   role="tab" aria-selected="false" aria-controls="tab-vendors">🏪 Vendors</button>
+      <button class="tab-btn" data-tab="timeline"  role="tab" aria-selected="false" aria-controls="tab-timeline">📅 Timeline</button>
+      <button class="tab-btn" data-tab="ideas"     role="tab" aria-selected="false" aria-controls="tab-ideas">💡 Ideas</button>
+    </div>
+
+    <!-- Tab: Overview -->
+    <div id="tab-overview" class="tab-panel" role="tabpanel" aria-label="Budget overview">
+      <h2 class="tab-panel__title">Budget Breakdown</h2>
+      <div id="budget-breakdown-container" role="list" aria-label="Budget categories">
+        <div class="skeleton skeleton--line"></div>
+        <div class="skeleton skeleton--line"></div>
+        <div class="skeleton skeleton--line"></div>
+      </div>
+    </div>
+
+    <!-- Tab: Vendors -->
+    <div id="tab-vendors" class="tab-panel" role="tabpanel" aria-label="Vendor management" hidden aria-hidden="true">
+      <div class="tab-panel__header">
+        <h2 class="tab-panel__title">Vendors</h2>
+        <span class="tab-panel__subtitle">Total Estimate: <strong id="vendors-total" aria-live="polite">—</strong></span>
+      </div>
+      <div id="vendors-container" class="vendors-grid" role="list" aria-label="Vendor list">
+        <div class="skeleton skeleton--card"></div>
+        <div class="skeleton skeleton--card"></div>
+      </div>
+      <!-- Add Vendor Form -->
+      <details class="add-vendor-details glass-card">
+        <summary class="add-vendor-summary" aria-label="Add a new vendor">+ Add New Vendor</summary>
+        <form id="add-vendor-form" class="add-vendor-form" novalidate aria-label="Add vendor form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="new-vendor-name">Vendor Name</label>
+              <input class="form-input" type="text" id="new-vendor-name" placeholder="e.g. Royal Photography" aria-required="true" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="new-vendor-cost">Estimated Cost</label>
+              <input class="form-input" type="number" id="new-vendor-cost" placeholder="e.g. 25000" min="0" aria-required="true" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="new-vendor-priority">Priority</label>
+              <select class="form-input form-select" id="new-vendor-priority">
+                <option value="high">High</option>
+                <option value="medium" selected>Medium</option>
+                <option value="low">Low</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="new-vendor-notes">Notes</label>
+              <input class="form-input" type="text" id="new-vendor-notes" placeholder="e.g. Need early booking" />
+            </div>
+          </div>
+          <button type="button" class="btn btn--primary" id="btn-add-vendor" aria-label="Add vendor to list">
+            Add Vendor
+          </button>
+        </form>
+      </details>
+    </div>
+
+    <!-- Tab: Timeline -->
+    <div id="tab-timeline" class="tab-panel" role="tabpanel" aria-label="Event timeline" hidden aria-hidden="true">
+      <div class="tab-panel__header">
+        <h2 class="tab-panel__title">Planning Timeline</h2>
+        <span class="tab-panel__subtitle" id="timeline-progress-label" aria-live="polite">Loading...</span>
+      </div>
+      <div class="progress-bar" role="progressbar" aria-label="Timeline completion" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar__fill" id="timeline-progress-bar"></div>
+      </div>
+      <div id="timeline-container" aria-label="Task list" aria-live="polite">
+        <div class="skeleton skeleton--line"></div>
+        <div class="skeleton skeleton--line"></div>
+        <div class="skeleton skeleton--line"></div>
+      </div>
+    </div>
+
+    <!-- Tab: Ideas -->
+    <div id="tab-ideas" class="tab-panel" role="tabpanel" aria-label="Event ideas" hidden aria-hidden="true">
+      <div class="tab-panel__header">
+        <h2 class="tab-panel__title">Personalized Ideas</h2>
+        <button class="btn btn--secondary btn--sm" id="btn-regenerate-ideas" aria-label="Generate new AI ideas">
+          🔄 Regenerate
+        </button>
+      </div>
+      <div id="ideas-container" class="ideas-grid">
+        <div id="ideas-themes"></div>
+        <div id="ideas-decor"></div>
+        <div id="ideas-catering"></div>
+        <div id="ideas-entertainment"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     VIEW 5: AI CHAT
+═══════════════════════════════════════════════════════════════════════════ -->
+<section id="view-chat" class="view" aria-label="AI Chat with EventGenie" aria-hidden="true">
+  <div class="chat">
+    <div class="chat__header glass-card">
+      <div class="chat__avatar" aria-hidden="true">✨</div>
+      <div>
+        <h1 class="chat__title">EventGenie AI</h1>
+        <p class="chat__status">Your personal event planning assistant</p>
+      </div>
+    </div>
+
+    <!-- Quick Chips -->
+    <div class="chat__chips" aria-label="Suggested questions">
+      <span class="chat__chips-label">Ask me:</span>
+      <button class="chat-chip" aria-label="Ask how to reduce venue cost">How can I reduce venue costs?</button>
+      <button class="chat-chip" aria-label="Ask for theme suggestions">What themes work for my event?</button>
+      <button class="chat-chip" aria-label="Ask what's due this month">What's due this month?</button>
+      <button class="chat-chip" aria-label="Ask for vendor tips">Any vendor negotiation tips?</button>
+    </div>
+
+    <!-- Chat Messages -->
+    <div id="chat-messages" class="chat__messages" role="list" aria-label="Chat conversation" aria-live="polite">
+      <!-- Welcome message -->
+      <div class="chat-bubble chat-bubble--ai" role="listitem">
+        <span class="chat-bubble__avatar" aria-hidden="true">✨</span>
+        <div class="chat-bubble__body">
+          <div class="chat-bubble__header">
+            <strong class="chat-bubble__name">EventGenie</strong>
+          </div>
+          <div class="chat-bubble__content">
+            Hi there! 👋 I'm EventGenie, your AI event planning assistant. I can help with budget tips, vendor recommendations, timeline advice, and creative ideas. What would you like to know about your event?
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Input -->
+    <form id="chat-form" class="chat__input-area" aria-label="Chat input">
+      <label for="chat-input" class="sr-only">Type your message</label>
+      <input type="text" id="chat-input" class="chat__input"
+        placeholder="Ask EventGenie anything about your event..."
+        autocomplete="off"
+        aria-label="Chat message input"
+        maxlength="500" />
+      <button type="submit" class="btn btn--primary chat__send" aria-label="Send message">
+        Send ✈️
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     VIEW 6: SAVED PLANS
+═══════════════════════════════════════════════════════════════════════════ -->
+<section id="view-plans" class="view" aria-label="Saved event plans" aria-hidden="true">
+  <div class="plans-page">
+    <div class="plans-page__header">
+      <h1 class="plans-page__title">My Event Plans</h1>
+      <div class="plans-page__header-actions">
+        <input type="file" id="import-plan-file" accept=".json,application/json" class="sr-only" aria-label="Upload plan JSON file" />
+        <button class="btn btn--secondary" id="btn-import-plan" aria-label="Import event plan from JSON file">
+          📥 Import Plan
+        </button>
+        <button class="btn btn--primary" id="btn-create-plan" aria-label="Create a new event plan">
+          + Create New Plan
+        </button>
+      </div>
+    </div>
+    <div id="plans-container" class="plans-grid" role="list" aria-label="Saved plans list" aria-live="polite">
+      <div class="skeleton skeleton--card"></div>
+      <div class="skeleton skeleton--card"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════════════════════ -->
+<footer class="app-footer" role="contentinfo">
+  <div class="app-footer__inner">
+    <div class="app-footer__top">
+      <div class="app-footer__brand">
+        <a href="#" class="app-footer__logo" data-nav="landing" aria-label="EventGenie home">
+          <svg class="navbar__logo-svg" width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M16 2L18.8 11.2L28 14L18.8 16.8L16 26L13.2 16.8L4 14L13.2 11.2L16 2Z" fill="#E10600"/>
+            <path d="M23 6L24.5 10L28.5 11.5L24.5 13L23 17L21.5 13L17.5 11.5L21.5 10L23 6Z" fill="#E34234" opacity="0.85"/>
+            <path d="M8 18L9 21L12 22L9 23L8 26L7 23L4 22L7 21L8 18Z" fill="#BFE23A"/>
+          </svg>
+          <span class="app-footer__logo-text">EventGenie</span>
+        </a>
+        <p class="app-footer__tagline">
+          AI-powered celebration & event planner. Intelligent budgets, timelines, vendor checklists, and creative ideas in seconds.
+        </p>
+      </div>
+
+      <div class="app-footer__actions">
+        <a href="mailto:adityanakhale0@gmail.com" class="btn-github-star" aria-label="Contact Aditya Nakhale">
+          <svg class="btn-github-star__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect width="20" height="16" x="2" y="4" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          <span class="btn-github-star__text">Contact Aditya</span>
+          <span class="btn-github-star__star">✉</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="app-footer__bottom">
+      <p class="app-footer__copyright">
+        © 2026 EventGenie • All rights reserved.
+      </p>
+      <p class="app-footer__credit">
+        Crafted with <span class="heart-icon" aria-label="love">❤️</span> by <a href="mailto:adityanakhale0@gmail.com" class="creator-link">Aditya Nakhale</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast container (injected by ui.js) -->
+<div id="toast-container" aria-label="Notifications" aria-live="polite"></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

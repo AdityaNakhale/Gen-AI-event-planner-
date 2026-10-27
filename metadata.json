@@ -1,0 +1,8 @@
+{
+  "name": "EventGenie",
+  "description": "GenAI-powered celebration and event planner for weddings, birthdays, and community events with smart budgets, vendor checklists, timelines, and AI concierge.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
