@@ -412,12 +412,12 @@
           <div class="form-group form-group--full">
             <div class="pref-chips" aria-label="Quick preference suggestions">
               <span class="pref-chip__label">Quick add:</span>
-              <button type="button" class="pref-chip" data-pref="outdoor">🌿 Outdoor</button>
-              <button type="button" class="pref-chip" data-pref="vegetarian menu">🥗 Vegetarian</button>
-              <button type="button" class="pref-chip" data-pref="live music">🎵 Live Music</button>
-              <button type="button" class="pref-chip" data-pref="minimalist decor">🤍 Minimalist</button>
-              <button type="button" class="pref-chip" data-pref="kids friendly">👶 Kids Friendly</button>
-              <button type="button" class="pref-chip" data-pref="photography focus">📸 Photo Focus</button>
+              <button type="button" class="pref-chip" data-pref="outdoor" aria-label="Add Outdoor preference">🌿 Outdoor</button>
+              <button type="button" class="pref-chip" data-pref="vegetarian menu" aria-label="Add Vegetarian preference">🥗 Vegetarian</button>
+              <button type="button" class="pref-chip" data-pref="live music" aria-label="Add Live Music preference">🎵 Live Music</button>
+              <button type="button" class="pref-chip" data-pref="minimalist decor" aria-label="Add Minimalist Decor preference">🤍 Minimalist</button>
+              <button type="button" class="pref-chip" data-pref="kids friendly" aria-label="Add Kids Friendly preference">👶 Kids Friendly</button>
+              <button type="button" class="pref-chip" data-pref="photography focus" aria-label="Add Photography Focus preference">📸 Photo Focus</button>
             </div>
           </div>
         </div>
@@ -525,14 +525,14 @@
 
     <!-- Dashboard Tabs -->
     <div class="dashboard__tabs" role="tablist" aria-label="Dashboard sections">
-      <button class="tab-btn tab-btn--active" data-tab="overview"  role="tab" aria-selected="true"  aria-controls="tab-overview">📊 Overview</button>
-      <button class="tab-btn" data-tab="vendors"   role="tab" aria-selected="false" aria-controls="tab-vendors">🏪 Vendors</button>
-      <button class="tab-btn" data-tab="timeline"  role="tab" aria-selected="false" aria-controls="tab-timeline">📅 Timeline</button>
-      <button class="tab-btn" data-tab="ideas"     role="tab" aria-selected="false" aria-controls="tab-ideas">💡 Ideas</button>
+      <button class="tab-btn tab-btn--active" id="tab-btn-overview" data-tab="overview"  role="tab" aria-selected="true"  aria-controls="tab-overview" aria-label="Budget Overview Tab">📊 Overview</button>
+      <button class="tab-btn" id="tab-btn-vendors" data-tab="vendors"   role="tab" aria-selected="false" aria-controls="tab-vendors" aria-label="Vendors Checklist Tab">🏪 Vendors</button>
+      <button class="tab-btn" id="tab-btn-timeline" data-tab="timeline"  role="tab" aria-selected="false" aria-controls="tab-timeline" aria-label="Planning Timeline Tab">📅 Timeline</button>
+      <button class="tab-btn" id="tab-btn-ideas" data-tab="ideas"     role="tab" aria-selected="false" aria-controls="tab-ideas" aria-label="AI Creative Ideas Tab">💡 Ideas</button>
     </div>
 
     <!-- Tab: Overview -->
-    <div id="tab-overview" class="tab-panel" role="tabpanel" aria-label="Budget overview">
+    <div id="tab-overview" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-overview" aria-label="Budget overview">
       <h2 class="tab-panel__title">Budget Breakdown</h2>
       <div id="budget-breakdown-container" role="list" aria-label="Budget categories">
         <div class="skeleton skeleton--line"></div>
@@ -542,7 +542,7 @@
     </div>
 
     <!-- Tab: Vendors -->
-    <div id="tab-vendors" class="tab-panel" role="tabpanel" aria-label="Vendor management" hidden aria-hidden="true">
+    <div id="tab-vendors" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-vendors" aria-label="Vendor management" hidden aria-hidden="true">
       <div class="tab-panel__header">
         <h2 class="tab-panel__title">Vendors</h2>
         <span class="tab-panel__subtitle">Total Estimate: <strong id="vendors-total" aria-live="polite">—</strong></span>
@@ -585,7 +585,7 @@
     </div>
 
     <!-- Tab: Timeline -->
-    <div id="tab-timeline" class="tab-panel" role="tabpanel" aria-label="Event timeline" hidden aria-hidden="true">
+    <div id="tab-timeline" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-timeline" aria-label="Event timeline" hidden aria-hidden="true">
       <div class="tab-panel__header">
         <h2 class="tab-panel__title">Planning Timeline</h2>
         <span class="tab-panel__subtitle" id="timeline-progress-label" aria-live="polite">Loading...</span>
@@ -601,7 +601,7 @@
     </div>
 
     <!-- Tab: Ideas -->
-    <div id="tab-ideas" class="tab-panel" role="tabpanel" aria-label="Event ideas" hidden aria-hidden="true">
+    <div id="tab-ideas" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-ideas" aria-label="Event ideas" hidden aria-hidden="true">
       <div class="tab-panel__header">
         <h2 class="tab-panel__title">Personalized Ideas</h2>
         <button class="btn btn--secondary btn--sm" id="btn-regenerate-ideas" aria-label="Generate new AI ideas">

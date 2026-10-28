@@ -4,12 +4,12 @@
  * The GEMINI_API_KEY is stored in Vercel environment variables — never exposed to the client.
  *
  * POST /api/generate
- * Body: { prompt: string, systemPrompt: string, format: 'text'|'json' }
- * Returns: { result: string }
+ * Body: { prompt: string, systemPrompt?: string, format?: 'text'|'json' }
+ * Returns: { result: string, modelUsed: string }
  */
 
-const PRIMARY_MODEL  = 'gemini-2.5-flash';
-const FALLBACK_MODELS = ['gemini-3.8-flash', 'gemini-flash-latest'];
+const PRIMARY_MODEL = 'gemini-2.5-flash';
+const FALLBACK_MODELS = ['gemini-flash-latest', 'gemini-3.8-flash'];
 
 function getGeminiUrl(model) {
   return `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
@@ -19,8 +19,10 @@ export default async function handler(req, res) {
   // ── Security & CORS Headers ────────────────────────────────────────────────
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=(), usb=()');
 
   // ── Handle Preflight ────────────────────────────────────────────────────────
   if (req.method === 'OPTIONS') {
@@ -36,7 +38,7 @@ export default async function handler(req, res) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     console.error('GEMINI_API_KEY environment variable is not set.');
-    return res.status(500).json({ error: 'Server configuration error.' });
+    return res.status(500).json({ error: 'Server configuration error: missing GEMINI_API_KEY.' });
   }
 
   // ── Input Validation ────────────────────────────────────────────────────────
@@ -58,9 +60,9 @@ export default async function handler(req, res) {
       }
     ],
     generationConfig: {
-      temperature:     0.7,
+      temperature: 0.7,
       maxOutputTokens: 2048,
-      topP:            0.9
+      topP: 0.9
     }
   };
 
@@ -84,16 +86,16 @@ export default async function handler(req, res) {
     try {
       const url = `${getGeminiUrl(model)}?key=${apiKey}`;
       const geminiRes = await fetch(url, {
-        method:  'POST',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify(requestBody)
+        body: JSON.stringify(requestBody)
       });
 
       if (!geminiRes.ok) {
         const errText = await geminiRes.text();
         console.warn(`Gemini (${model}) returned ${geminiRes.status}:`, errText);
         lastError = `Gemini (${model}): ${geminiRes.status} ${errText}`;
-        continue; // Try next model
+        continue;
       }
 
       const data = await geminiRes.json();
