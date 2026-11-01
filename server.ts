@@ -142,8 +142,13 @@ app.post('/api/generate', rateLimiter, async (req: Request<{}, {}, GenerateReque
 
 async function startServer(): Promise<void> {
   if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.resolve(__dirname, 'dist')));
+    app.use(express.static(path.resolve(__dirname, 'dist'), {
+      maxAge: '1y',
+      immutable: true,
+      index: false
+    }));
     app.get('*', (_req: Request, res: Response) => {
+      res.setHeader('Cache-Control', 'no-cache');
       res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
     });
   } else {

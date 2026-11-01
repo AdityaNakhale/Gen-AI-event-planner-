@@ -64,7 +64,7 @@ export async function callGemini(prompt, systemPrompt, format = 'text', retries 
         if (clientKey) {
           try {
             return await _callGeminiDirect(prompt, systemPrompt, format, clientKey);
-          } catch (directErr) {
+          } catch {
             throw err;
           }
         }

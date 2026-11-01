@@ -4,14 +4,14 @@
  * Exposed on window.app for inline event handler access.
  */
 
-import { EVENT_TYPES, CURRENCIES, DEFAULT_SETTINGS } from './constants.js';
+import { EVENT_TYPES, DEFAULT_SETTINGS } from './constants.js';
 import {
   savePlan, loadPlan, loadAllPlans, updatePlan, deletePlan,
-  setActivePlan, getActivePlan, getActivePlanId, loadSettings, saveSettings,
+  setActivePlan, getActivePlan, getActivePlanId, loadSettings,
   exportPlanJSON, importPlanJSON
 } from './storage.js';
-import { allocateBudget, calculateSpent, calculateRemaining, getBudgetHealth, validateBudget, formatCurrency, getBudgetSuggestion } from './budget.js';
-import { generateTimelineStructure, getTimelineProgress, getDaysUntilEvent, groupTasksByMonth, getOverdueTasks, subtractMonths } from './timeline.js';
+import { allocateBudget, calculateSpent, calculateRemaining, getBudgetHealth, formatCurrency, getBudgetSuggestion } from './budget.js';
+import { generateTimelineStructure, getTimelineProgress, getDaysUntilEvent, groupTasksByMonth, getOverdueTasks } from './timeline.js';
 import { generateBudgetBreakdown, generateVendorChecklist, generateEventIdeas, generateAIResponse } from './ai.js';
 import {
   showView, showToast, showConfirmModal, showLoading, hideLoading,
@@ -184,7 +184,7 @@ function _setupPlansActions() {
       } else {
         showToast('Failed to import plan: Invalid JSON format.', 'error');
       }
-    } catch (err) {
+    } catch {
       showToast('Error reading plan file.', 'error');
     }
     e.target.value = '';

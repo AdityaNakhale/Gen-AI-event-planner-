@@ -198,13 +198,22 @@ export function exportPlanJSON(planId) {
  */
 export function importPlanJSON(jsonString) {
   try {
-    const data = JSON.parse(jsonString);
-    if (!data.eventName || !data.eventType) {
+    const rawData = JSON.parse(jsonString, (key, value) => {
+      if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
+        return undefined;
+      }
+      return value;
+    });
+
+    if (!rawData || typeof rawData !== 'object' || Array.isArray(rawData)) {
+      throw new Error('Invalid plan format: payload must be a JSON object.');
+    }
+    if (!rawData.eventName || !rawData.eventType) {
       throw new Error('Invalid plan format: missing eventName or eventType.');
     }
     const imported = {
-      ...data,
-      id: `plan_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+      ...rawData,
+      id: generateId(),
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     };

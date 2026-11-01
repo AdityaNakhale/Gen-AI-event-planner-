@@ -15,7 +15,7 @@ import { EVENT_TYPES, CURRENCIES, BUDGET_LIMITS } from './constants.js';
  * @param {string} [currency='INR'] - Currency code
  * @returns {{ [category: string]: number }} Category → amount map
  */
-export function allocateBudget(totalBudget, eventType, currency = 'INR') {
+export function allocateBudget(totalBudget, eventType, _currency = 'INR') {
   const config = EVENT_TYPES[eventType];
   if (!config) throw new Error(`Unknown event type: ${eventType}`);
   if (typeof totalBudget !== 'number' || isNaN(totalBudget)) {
